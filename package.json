@@ -31,8 +31,7 @@
       "dist"
    ],
    "scripts": {
-      "build": "rollup -c",
-      "build!": "rm -rf ./dist && rollup -c && cd ../TypedReorder && tsc && cp ./dist/* ../reorder.js/dist && cd ../reorder.js",
+      "build": "rollup -c && cp ./types/* ./dist",
       "dev": "rollup -c rollup.config.dev.js -w",
       "pretest": "npm run build",
       "test": "vows test/*.js --nocolor; echo",
