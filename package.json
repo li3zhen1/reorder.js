@@ -20,15 +20,19 @@
    "main": "dist/reorder.cjs.js",
    "module": "dist/reorder.esm.js",
    "browser": "dist/reorder.min.js",
-   "types": "./reorder.d.ts",
+   "types": "dist",
    "author": [
       {
          "name": "Jean-Daniel Fekete",
          "url": "http://www.aviz.fr/~fekete"
       }
    ],
+   "files": [
+      "dist"
+   ],
    "scripts": {
       "build": "rollup -c",
+      "build!": "rm -rf ./dist && rollup -c && cd ../TypedReorder && tsc && cp ./dist/* ../reorder.js/dist && cd ../reorder.js",
       "dev": "rollup -c rollup.config.dev.js -w",
       "pretest": "npm run build",
       "test": "vows test/*.js --nocolor; echo",
@@ -40,10 +44,6 @@
       "check": "jshint src/*.js test/*.js",
       "release": "release-it"
    },
-   "files": [
-      "dist",
-      "reorder.d.ts"
-   ],
    "dependencies": {
       "@sgratzl/science": "^2.0.0"
    },
